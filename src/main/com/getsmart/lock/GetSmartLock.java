@@ -1,3 +1,5 @@
+package com.getsmart.lock;
+
 import java.util.ArrayList;
 import java.util.Random;
 
