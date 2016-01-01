@@ -1,4 +1,7 @@
+package com.getsmart.lock;
+
 import java.util.ArrayList;
+import java.util.Random;
 
 class GetSmartLock {
   public static void main(String[] args) {
@@ -29,10 +32,25 @@ class GetSmartLock {
     }
 
     int index = getIndexOfInformation("what is my name?", questions);
-    String getQuestion = getInformation(index, questions);
+    String getQuestion = getInformation(index, questions);   
     String getAnswer = getInformation(index, answers);
     System.out.println(String.format("%s : %s", getQuestion, getAnswer));
 
+    System.out.println("testing random: " + getRandomIndexList(questions));
+
+  }
+
+  private static int getRandomIndexList(ArrayList<String> list) {
+    Random randomObj = new Random();
+    int randomIndex = 0;
+    int listSize = list.size();
+
+    if (listSize < 1) {
+      //TODO : throw exception or handle this case somehow.      
+    }
+
+    randomIndex = randomObj.nextInt(listSize);
+    return randomIndex;
   }
 
   private static void storeInformation(String info, ArrayList<String> storeToList) {
