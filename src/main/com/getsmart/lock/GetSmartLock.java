@@ -1,9 +1,9 @@
-package com.getsmart.lock;
+package main.com.getsmart.lock;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-class GetSmartLock {
+public class GetSmartLock {
   public static void main(String[] args) {
     ArrayList<String> questions = new ArrayList<>();
     ArrayList<String> answers = new ArrayList<>();
@@ -36,32 +36,52 @@ class GetSmartLock {
     String getAnswer = getInformation(index, answers);
     System.out.println(String.format("%s : %s", getQuestion, getAnswer));
 
-    System.out.println("testing random: " + getRandomIndexList(questions));
+    try {
+      int randomInt = getRandomIndexList(questions); 
+      System.out.println("testing random: " + randomInt);
+    } catch (Exception e) {
+
+    }
 
   }
 
-  private static int getRandomIndexList(ArrayList<String> list) {
+  /**
+   * Gets a random index from the provided list. 
+   *
+   * @param list The list to get a random index number from based on its size
+   * @throws Exception If the list size is < 1
+   */
+  public static int getRandomIndexList(ArrayList<String> list) throws Exception {
     Random randomObj = new Random();
     int randomIndex = 0;
     int listSize = list.size();
 
     if (listSize < 1) {
-      //TODO : throw exception or handle this case somehow.      
+      throw new Exception("List has size < 1 and can't get information");
     }
 
     randomIndex = randomObj.nextInt(listSize);
     return randomIndex;
   }
 
-  private static void storeInformation(String info, ArrayList<String> storeToList) {
+  /**
+   * Stores the given information into the provided list.
+   */
+  public static void storeInformation(String info, ArrayList<String> storeToList) {
     storeToList.add(info);  
   }
 
-  private static String getInformation(int index, ArrayList<String> getFromList) {
+  /**
+   * Gets information from the provided list based on the index provided.
+   */
+  public static String getInformation(int index, ArrayList<String> getFromList) {
     return getFromList.get(index);
   }
 
-  private static int getIndexOfInformation(String info, ArrayList<String> getFromList) {
+  /**
+   * Gets the index of the info provided. If no info is found a -1 is returned.
+   */
+  public static int getIndexOfInformation(String info, ArrayList<String> getFromList) {
     return getFromList.indexOf(info);
   }
 }
