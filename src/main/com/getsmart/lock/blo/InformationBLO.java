@@ -27,6 +27,13 @@ public class InformationBLO {
   }
 
   /**
+   * Public constructor that will set the InformationDTO with the provided one.
+   */
+  public InformationBLO(InformationDTO info) {
+    appInfo = info;
+  }
+
+  /**
    * Populates the InformationDTO with a random index, the corresponding answer and questions
    * already defined in the databse.
    */
@@ -64,10 +71,17 @@ public class InformationBLO {
   }
 
   /**
+   *
+   */
+  public InformationDTO getInformationDTO() {
+    return appInfo;
+  }
+
+  /**
    * Update the InformationDTO with the provided DTO. Assuming this new DTO
    * has some new or updated information.
    */
-  public void updateInformation(InformationDTO updatedInfo) {
+  public void updateInformationDTO(InformationDTO updatedInfo) {
     appInfo = updatedInfo;
   }
 

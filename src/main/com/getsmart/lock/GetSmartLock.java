@@ -20,7 +20,7 @@ public class GetSmartLock {
     userInputReader.close();
 
     appData.setUserAnswer(userAnswer);
-    appLogic.updateInformation(appData);
+    appLogic.updateInformationDTO(appData);
 
     boolean correctAnswer = appLogic.checkAnswer();
     System.out.println("Was answer correct?: " + correctAnswer);
