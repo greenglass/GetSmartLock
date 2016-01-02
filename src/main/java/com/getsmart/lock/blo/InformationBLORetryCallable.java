@@ -7,9 +7,11 @@ import com.getsmart.lock.retry.RetryCallable;
 public class InformationBLORetryCallable implements BusinessLogic {
 
   private InformationBLO classLogic;
+  private int numberOfChances;
 
   public InformationBLORetryCallable(InformationBLO logic) {
     this.classLogic = logic;
+    this.numberOfChances = classLogic.getInformationDTO().getNumberOfTries();
   }
 
   @Override
@@ -29,11 +31,11 @@ public class InformationBLORetryCallable implements BusinessLogic {
 
       };
 
-      RetryCallable<Boolean> prompt = new RetryCallable<Boolean>(answerPromptOp);
+      RetryCallable<Boolean> prompt = new RetryCallable<Boolean>(numberOfChances, answerPromptOp);
 
       try {
         correctAnswer = prompt.call();
-        classLogic.closeInputScanner();
+        //classLogic.closeInputScanner();
       } catch (Exception e) {
 
       }
