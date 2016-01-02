@@ -1,8 +1,8 @@
-package test.com.getsmart.lock.dto;
+package com.getsmart.lock.dto;
 
 import junit.framework.TestCase;
 
-import main.com.getsmart.lock.dto.InformationDTO;
+import com.getsmart.lock.dto.InformationDTO;
 
 public class InformationDTO_UT extends TestCase {
 

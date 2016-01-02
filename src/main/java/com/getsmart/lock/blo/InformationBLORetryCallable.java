@@ -1,8 +1,8 @@
-package main.com.getsmart.lock.blo;
+package com.getsmart.lock.blo;
 
 import java.util.concurrent.Callable;
 
-import main.com.getsmart.lock.retry.RetryCallable;
+import com.getsmart.lock.retry.RetryCallable;
 
 public class InformationBLORetryCallable implements BusinessLogic {
 

@@ -1,4 +1,4 @@
-package main.com.getsmart.lock.retry;
+package com.getsmart.lock.retry;
 
 public class RetryException extends Exception {
 

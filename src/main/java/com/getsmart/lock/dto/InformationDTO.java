@@ -1,4 +1,4 @@
-package main.com.getsmart.lock.dto;
+package com.getsmart.lock.dto;
 
 public class InformationDTO {
   private String question;

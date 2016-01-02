@@ -1,11 +1,11 @@
-package main.com.getsmart.lock.blo;
+package com.getsmart.lock.blo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-import main.com.getsmart.lock.dto.InformationDTO;
+import com.getsmart.lock.dto.InformationDTO;
 
 /**
  * The logic that will handle operations on the InformationDTO. Since the DTO is used for

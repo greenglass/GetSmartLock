@@ -5,8 +5,8 @@ import java.util.Arrays;
 
 import junit.framework.TestCase;
 
-import main.com.getsmart.lock.blo.InformationBLO;
-import main.com.getsmart.lock.dto.InformationDTO;
+import com.getsmart.lock.blo.InformationBLO;
+import com.getsmart.lock.dto.InformationDTO;
 
 public class InformationBLO_UT extends TestCase {
 

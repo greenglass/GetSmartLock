@@ -1,4 +1,4 @@
-package main.com.getsmart.lock.retry;
+package com.getsmart.lock.retry;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.CancellationException;
