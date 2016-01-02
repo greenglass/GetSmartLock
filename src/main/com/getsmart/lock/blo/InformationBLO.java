@@ -3,6 +3,7 @@ package main.com.getsmart.lock.blo;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 import main.com.getsmart.lock.dto.InformationDTO;
 
@@ -10,7 +11,7 @@ import main.com.getsmart.lock.dto.InformationDTO;
  * The logic that will handle operations on the InformationDTO. Since the DTO is used for
  * holding the data and retreiving the data this class handles manipulating the data.
  */
-public class InformationBLO {
+public class InformationBLO implements BusinessLogic {
 
   //Arrays are mimicing a database for the time being
   private String[] questionsArray = {"what is my name?", "what date is it?", "what grade did you learn cs?"};
@@ -18,6 +19,7 @@ public class InformationBLO {
   private ArrayList<String> questions = new ArrayList<>(Arrays.asList(questionsArray));
   private ArrayList<String> answers = new ArrayList<>(Arrays.asList(answersArray));
   private static InformationDTO appInfo;
+  private Scanner userInputReader;
 
   /**
    *  Public empty contructor.
@@ -108,5 +110,25 @@ public class InformationBLO {
     correctAnswer = appInfo.getAnswer().equals(appInfo.getUserAnswer());
 
     return correctAnswer;
+  }
+
+  /**
+   *
+   */
+  @Override
+    public boolean promptForAnswer() {
+      System.out.println(appInfo.getQuestion());
+      userInputReader = new Scanner(System.in);
+      String userAnswer = userInputReader.nextLine();
+      userInputReader.reset();
+      appInfo.setUserAnswer(userAnswer);
+      return checkAnswer();
+    }
+
+  /**
+   *
+   */
+  public void closeInputScanner() {
+    userInputReader.close();
   }
 }
