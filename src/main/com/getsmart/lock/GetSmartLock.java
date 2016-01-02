@@ -1,29 +1,20 @@
 package main.com.getsmart.lock;
 
-import java.util.Scanner;
-
 import main.com.getsmart.lock.blo.InformationBLO;
-import main.com.getsmart.lock.dto.InformationDTO;
+import main.com.getsmart.lock.blo.InformationBLORetryCallable;
 
 public class GetSmartLock {
   public static void main(String[] args) {
 
-    InformationDTO appData = new InformationDTO();
     InformationBLO appLogic = new InformationBLO();
 
-    appData = appLogic.populateInformationDTO();
+    appLogic.populateInformationDTO();
 
-    System.out.println(appData.getQuestion());
+    InformationBLORetryCallable logicRetry = new InformationBLORetryCallable(appLogic);
+    boolean correctAnswer = logicRetry.promptForAnswer();      
 
-    Scanner userInputReader = new Scanner(System.in);
-    String userAnswer = userInputReader.next();
-    userInputReader.close();
-
-    appData.setUserAnswer(userAnswer);
-    appLogic.updateInformationDTO(appData);
-
-    boolean correctAnswer = appLogic.checkAnswer();
     System.out.println("Was answer correct?: " + correctAnswer);
+
   }
 
 }
