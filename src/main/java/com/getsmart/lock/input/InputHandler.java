@@ -1,13 +1,14 @@
 package com.getsmart.lock.input;
 
+import java.io.InputStream;
 import java.util.Scanner;
 
 import com.getsmart.lock.dto.InformationDTO;
 
 public class InputHandler {
 
-  InformationDTO infoData;
-  Scanner userInputReader;
+  private InformationDTO infoData;
+  private Scanner userInputReader;
 
   public InputHandler() {
     this(new InformationDTO());
@@ -21,7 +22,14 @@ public class InputHandler {
    *
    */
   public String waitForAnswer() {
-    userInputReader = new Scanner(System.in);
+    return waitForAnswerFromStream(System.in);    
+  }
+
+  /**
+   *
+   */
+  public String waitForAnswerFromStream(InputStream in) {
+    userInputReader = new Scanner(in);
     String userAnswer = userInputReader.nextLine();
     userInputReader.reset();
     return userAnswer;
