@@ -1,4 +1,4 @@
-package test.com.getsmart.lock.blo;
+package com.getsmart.lock.blo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,9 +19,10 @@ public class InformationBLO_UT extends TestCase {
   private static final String answer = "test answer";
   private static final int index = 10;
   private static final String userAnswer = "test user answer";
+  private static final int numberOfTries = 1;
 
   protected void setUp() {
-    testInfo = new InformationDTO(question, answer, index, userAnswer);
+    testInfo = new InformationDTO(question, answer, index, userAnswer, numberOfTries);
     testLogic = new InformationBLO(testInfo);
   }
 
@@ -48,6 +49,7 @@ public class InformationBLO_UT extends TestCase {
     assertEquals(answer, testDTO.getAnswer());
     assertEquals(index, testDTO.getIndex());
     assertEquals(userAnswer, testDTO.getUserAnswer());
+    assertEquals(numberOfTries, testDTO.getNumberOfTries());
   }
 
   /**
@@ -59,7 +61,8 @@ public class InformationBLO_UT extends TestCase {
     String newAnswer = "new answer";
     int newIndex = 100;
     String newUserAnswer = "new user answer";
-    InformationDTO newTestDTO = new InformationDTO(newQuestion, newAnswer, newIndex, newUserAnswer);
+    int newNumberOfTries = 100;
+    InformationDTO newTestDTO = new InformationDTO(newQuestion, newAnswer, newIndex, newUserAnswer, newNumberOfTries);
 
     testLogic.updateInformationDTO(newTestDTO);
 
@@ -68,6 +71,7 @@ public class InformationBLO_UT extends TestCase {
     assertEquals(newAnswer, updatedDTO.getAnswer());
     assertEquals(newIndex, updatedDTO.getIndex());
     assertEquals(newUserAnswer, updatedDTO.getUserAnswer());
+    assertEquals(newNumberOfTries, updatedDTO.getNumberOfTries());
   }
 
   /**

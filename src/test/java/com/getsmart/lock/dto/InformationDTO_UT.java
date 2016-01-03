@@ -11,9 +11,10 @@ public class InformationDTO_UT extends TestCase {
   private static final String answer = "test answer";
   private static final int index = 10;
   private static final String userAnswer = "test user answer";
+  private static final int numberOfTries = 1;
 
   protected void setUp(){
-    testDTO = new InformationDTO(question, answer, index, userAnswer);
+    testDTO = new InformationDTO(question, answer, index, userAnswer, numberOfTries);
   }
 
   public void testEmptyConstructor() {
@@ -22,6 +23,7 @@ public class InformationDTO_UT extends TestCase {
     assertEquals(null, emptyDTO.getAnswer());
     assertEquals(-1, emptyDTO.getIndex());
     assertEquals(null, emptyDTO.getUserAnswer());
+    assertEquals(1, emptyDTO.getNumberOfTries());
   }
 
   public void testGetQuestion() {
@@ -62,5 +64,15 @@ public class InformationDTO_UT extends TestCase {
     String newUserAnswer = "new user answer";
     testDTO.setUserAnswer(newUserAnswer);
     assertEquals(newUserAnswer, testDTO.getUserAnswer());
+  }
+
+  public void testGetNumberOfTries() {
+    assertEquals(numberOfTries, testDTO.getNumberOfTries());
+  }
+
+  public void testSetNumberOfTries() {
+    int newNumberOfTries = 10;
+    testDTO.setNumberOfTries(newNumberOfTries);
+    assertEquals(newNumberOfTries, testDTO.getNumberOfTries());
   }
 }

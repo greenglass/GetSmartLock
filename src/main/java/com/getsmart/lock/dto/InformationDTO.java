@@ -1,23 +1,29 @@
 package com.getsmart.lock.dto;
 
 public class InformationDTO {
+
+  private static final int DEFAULT_NUMBER_OF_TRIES = 1;
   private String question;
   private String answer;
   private int index;
   private String userAnswer;
+  private int numberOfTries;
 
   public InformationDTO() {
-    this.question = null;
-    this.answer = null;
-    this.index = -1;
-    this.userAnswer = null;
+    this(null, null, -1, null, DEFAULT_NUMBER_OF_TRIES);
   }
 
-  public InformationDTO(String question, String answer, int index, String userAnswer) {
+  public InformationDTO(int numberOfTries) {
+    this(null, null, -1, null, numberOfTries);
+  }
+
+  public InformationDTO(String question, String answer, 
+      int index, String userAnswer, int numberOfTries) {
     this.question = question;
     this.answer = answer;
     this.index = index;
     this.userAnswer = userAnswer;
+    this.numberOfTries = numberOfTries;
   }
 
   public String getQuestion() {
@@ -50,5 +56,13 @@ public class InformationDTO {
 
   public void setUserAnswer(String userAnswer) {
     this.userAnswer = userAnswer;
+  }
+
+  public int getNumberOfTries() {
+    return numberOfTries;
+  }
+
+  public void setNumberOfTries(int numberOfTries) {
+    this.numberOfTries = numberOfTries;
   }
 }

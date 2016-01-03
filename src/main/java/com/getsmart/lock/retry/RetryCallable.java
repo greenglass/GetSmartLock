@@ -17,6 +17,10 @@ public class RetryCallable<T> implements Callable<T> {
     this(DEFAULT_NUMBER_OF_RETRIES, DEFAULT_WAIT_TIME, task);
   }
 
+  public RetryCallable(int numberOfRetries, Callable<T> task) {
+    this(numberOfRetries, DEFAULT_WAIT_TIME, task);   
+  }
+
   public RetryCallable(int numberOfRetries, long timeToWait,
       Callable<T> task) {
     this.numberOfRetries = numberOfRetries;

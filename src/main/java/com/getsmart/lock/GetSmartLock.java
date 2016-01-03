@@ -1,20 +1,19 @@
 package com.getsmart.lock;
 
 import com.getsmart.lock.blo.InformationBLO;
-import com.getsmart.lock.blo.InformationBLORetryCallable;
+import com.getsmart.lock.blo.RetryMultipleQuestions;
+import com.getsmart.lock.dto.InformationDTO;
 
 public class GetSmartLock {
   public static void main(String[] args) {
 
-    InformationBLO appLogic = new InformationBLO();
+    int numberOfQuestions = 4;
+    int numberOfRetries = 1;
+    InformationDTO appData = new InformationDTO(numberOfRetries);
+    InformationBLO appLogic = new InformationBLO(appData);
 
-    appLogic.populateInformationDTO();
-
-    InformationBLORetryCallable logicRetry = new InformationBLORetryCallable(appLogic);
-    boolean correctAnswer = logicRetry.promptForAnswer();      
-
-    System.out.println("Was answer correct?: " + correctAnswer);
-
+    RetryMultipleQuestions logicRetry = new RetryMultipleQuestions(appLogic, numberOfQuestions);
+    logicRetry.askQuestion();
   }
 
 }
