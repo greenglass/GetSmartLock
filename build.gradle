@@ -32,12 +32,11 @@ test {
   testLogging {
     events "passed", "skipped", "failed", "standardOut", "standardError"
     showStandardStreams = true
-    exceptionFormat = 'full' 
-    
+    exceptionFormat = 'full'  
   }
   
   afterSuite { desc, result ->
-    println "Test result: ${result.successfulTestCount}/${result.testCount} completed successfully, ${result.failedTestCount} FAILED"
+    println "Test result [${desc.className}]: ${result.successfulTestCount}/${result.testCount} completed successfully, ${result.failedTestCount} FAILED"
   }
 }
 

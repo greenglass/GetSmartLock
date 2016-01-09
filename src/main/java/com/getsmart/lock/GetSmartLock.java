@@ -1,19 +1,21 @@
 package com.getsmart.lock;
 
-import com.getsmart.lock.blo.InformationBLO;
-import com.getsmart.lock.blo.RetryMultipleQuestions;
 import com.getsmart.lock.dto.InformationDTO;
+import com.getsmart.lock.dto.UnlockDTO;
+import com.getsmart.lock.unlock.RetryMultipleUnlockProcess;
 
 public class GetSmartLock {
   public static void main(String[] args) {
 
-    int numberOfQuestions = 4;
-    int numberOfRetries = 1;
-    InformationDTO appData = new InformationDTO(numberOfRetries);
-    InformationBLO appLogic = new InformationBLO(appData);
+    int numberOfQuestions = 3;
+    int numberOfRetries = 5;
+    InformationDTO infoData = new InformationDTO(numberOfRetries);
+    UnlockDTO procData = new UnlockDTO(numberOfQuestions);
 
-    RetryMultipleQuestions logicRetry = new RetryMultipleQuestions(appLogic, numberOfQuestions);
-    logicRetry.askQuestion();
+    //UnlockProcess process = new UnlockProcess(infoData);
+    //RetryUnlockProcess process = new RetryUnlockProcess(infoData);
+    RetryMultipleUnlockProcess process = new RetryMultipleUnlockProcess(procData, infoData);
+    System.out.println("unlocked? " + process.unlockPhone());
   }
 
 }

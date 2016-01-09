@@ -8,22 +8,25 @@ public class InformationDTO {
   private int index;
   private String userAnswer;
   private int numberOfTries;
+  private boolean isAnswerValid;
 
   public InformationDTO() {
-    this(null, null, -1, null, DEFAULT_NUMBER_OF_TRIES);
+    this(null, null, -1, null, DEFAULT_NUMBER_OF_TRIES, false);
   }
 
   public InformationDTO(int numberOfTries) {
-    this(null, null, -1, null, numberOfTries);
+    this(null, null, -1, null, numberOfTries, false);
   }
 
   public InformationDTO(String question, String answer, 
-      int index, String userAnswer, int numberOfTries) {
+      int index, String userAnswer, int numberOfTries,
+      boolean isAnswerValid) {
     this.question = question;
     this.answer = answer;
     this.index = index;
     this.userAnswer = userAnswer;
     this.numberOfTries = numberOfTries;
+    this.isAnswerValid = isAnswerValid;
   }
 
   public String getQuestion() {
@@ -64,5 +67,13 @@ public class InformationDTO {
 
   public void setNumberOfTries(int numberOfTries) {
     this.numberOfTries = numberOfTries;
+  }
+
+  public boolean getIsAnswerValid() {
+    return isAnswerValid;
+  }
+
+  public void setIsAnswerValid(boolean isAnswerValid) {
+    this.isAnswerValid = isAnswerValid;
   }
 }
