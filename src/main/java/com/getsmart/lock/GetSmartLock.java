@@ -9,7 +9,10 @@ public class GetSmartLock {
 
     int numberOfQuestions = 3;
     int numberOfRetries = 5;
-    InformationDTO infoData = new InformationDTO(numberOfRetries);
+    InformationDTO infoData = new InformationDTO(numberOfQuestions, numberOfRetries);
+
+    //infoData = Database.populateDTO(infoData);
+
     UnlockDTO procData = new UnlockDTO(numberOfQuestions);
 
     //UnlockProcess process = new UnlockProcess(infoData);

@@ -1,48 +1,56 @@
 package com.getsmart.lock.dto;
 
+import java.util.ArrayList;
+
 public class InformationDTO {
 
   private static final int DEFAULT_NUMBER_OF_TRIES = 1;
-  private String question;
-  private String answer;
+  private static final int DEFAULT_NUMBER_OF_QUESTIONS = 1;
   private int index;
   private String userAnswer;
   private int numberOfTries;
   private boolean isAnswerValid;
+  private ArrayList<String> questions, answers;
+  private int numberOfQuestions;
 
   public InformationDTO() {
-    this(null, null, -1, null, DEFAULT_NUMBER_OF_TRIES, false);
+    this(DEFAULT_NUMBER_OF_QUESTIONS, -1, null, DEFAULT_NUMBER_OF_TRIES, false);
   }
 
-  public InformationDTO(int numberOfTries) {
-    this(null, null, -1, null, numberOfTries, false);
+  public InformationDTO(int numberOfQuestions, int numberOfTries) {
+    this(numberOfQuestions, -1, null, numberOfTries, false);
   }
 
-  public InformationDTO(String question, String answer, 
-      int index, String userAnswer, int numberOfTries,
-      boolean isAnswerValid) {
-    this.question = question;
-    this.answer = answer;
+  public InformationDTO(int numberOfQuestions, int index, String userAnswer, int numberOfTries, boolean isAnswerValid) {
+    this.numberOfQuestions = numberOfQuestions;
     this.index = index;
     this.userAnswer = userAnswer;
     this.numberOfTries = numberOfTries;
     this.isAnswerValid = isAnswerValid;
   }
 
-  public String getQuestion() {
-    return question;
+  public void addQuestion(String question) {
+    questions.add(question);  
   }
 
-  public void setQuestion(String question) {
-    this.question = question;
+  public ArrayList<String> getQuestions() {
+    return questions;
   }
 
-  public String getAnswer() {
-    return answer;
+  public void addAnswer(String answer) {
+    answers.add(answer);
   }
 
-  public void setAnswer(String answer) {
-    this.answer = answer;
+  public ArrayList<String> getAnswer() {
+    return answers;
+  }
+
+  public int getNumberOfQuestions() {
+    return numberOfQuestions;
+  }
+
+  public void setNumberOfQuestions(int numberOfQuestions) {
+    this.numberOfQuestions = numberOfQuestions;
   }
 
   public int getIndex() {
