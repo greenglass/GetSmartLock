@@ -10,8 +10,8 @@ public class QuestionProvider {
 
   private InformationDTO infoData;
   //Arrays are mimicing a database for the time being
-  private String[] questionsArray = {"what is my name?", "what date is it?", "what grade did you learn cs?"};
-  private String[] answersArray = {"derek", "saturday", "college"};
+  private String[] questionsArray = {"Q1", "Q2", "Q3", "Q4", "Q5"};
+  private String[] answersArray = {"A1", "A2", "A3", "A4", "A5"};
   private ArrayList<String> questions = new ArrayList<>(Arrays.asList(questionsArray));
   private ArrayList<String> answers = new ArrayList<>(Arrays.asList(answersArray));
 
@@ -28,16 +28,17 @@ public class QuestionProvider {
    * already defined in the databse.
    */
   public InformationDTO populateInformationDTO() {
-    int randomIndex = -1;
-    try {
-      randomIndex = getRandomIndexList(questions);
-    } catch (Exception e) {
-      //TODO : Exception handling
+    int questionAmount = infoData.getNumberOfQuestions();
+    for (int i = 0; i < questionAmount; i++) {
+      int randomIndex = -1;
+      try {
+        randomIndex = getRandomIndexList(questions);
+      } catch (Exception e) {
+        //TODO : Exception handling
+      }
+      infoData.addQuestion(getInformation(randomIndex, questions));
+      infoData.addAnswer(getInformation(randomIndex, answers));
     }
-    infoData.setIndex(randomIndex);
-    infoData.setQuestion(getInformation(randomIndex, questions));
-    infoData.setAnswer(getInformation(randomIndex, answers));
-
     return infoData;
   }
 
@@ -66,12 +67,4 @@ public class QuestionProvider {
   public String getInformation(int index, ArrayList<String> getFromList) {
     return getFromList.get(index);
   }
-
-  /**
-   * Ask the user the question.
-   */
-  public void provideQuestion() {
-    System.out.println(infoData.getQuestion());
-  }
-
 }

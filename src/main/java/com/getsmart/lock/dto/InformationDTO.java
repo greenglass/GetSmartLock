@@ -41,7 +41,7 @@ public class InformationDTO {
     answers.add(answer);
   }
 
-  public ArrayList<String> getAnswer() {
+  public ArrayList<String> getAnswers() {
     return answers;
   }
 
